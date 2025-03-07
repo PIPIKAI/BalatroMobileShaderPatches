@@ -3058,6 +3058,7 @@ local student_loans = SMODS.Joker{
             end
         end
     end
+end
 }
 
 SMODS.Atlas{
@@ -3163,6 +3164,7 @@ local broke = SMODS.Joker{
             }))
         end
     end
+end
 }
 
 SMODS.Atlas{
