@@ -2,7 +2,7 @@
 	#define PRECISION highp
 #else
 	#define PRECISION mediump
-#endif	
+#endif
 
 // Look ionized.fs for explanation
 extern PRECISION vec2 shiny;
@@ -53,8 +53,8 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 
     if (shiny.g > 0.0 || shiny.g < 0.0) {
         // hsl.y = 0.02;
-        hsl.x = mod(hsl.x*1.0 + .5, 1.0);
-        hsl.y = min(hsl.y*1.0, .7);
+        hsl.x = mod(hsl.x + .5, 1.0);
+        hsl.y = min(hsl.y, .7);
         hsl.z *= (1.0 - adjusted_uv.x*(cos(shiny.r*0.512)));
     }
 
@@ -79,7 +79,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 
 number hue(number s, number t, number h)
 {
-	number hs = mod(h*1.0, 1.)*6.;
+	number hs = mod(h, 1.)*6.;
 	if (hs < 1.) return (t-s) * hs + s;
 	if (hs < 3.) return t;
 	if (hs < 4.) return (t-s) * (4.-hs) + s;
@@ -116,7 +116,7 @@ vec4 HSL(vec4 c)
 	else
 		hsl.x = (c.r - c.g) / delta + 4.0;
 
-	hsl.x = mod(hsl.x*1.0 / 6., 1.);
+	hsl.x = mod(hsl.x / 6., 1.);
 	return hsl;
 }
 
